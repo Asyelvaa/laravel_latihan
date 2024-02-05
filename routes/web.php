@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GradesController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,13 +38,21 @@ Route::get('/about', function(){
     ]);
 });
 
-Route::get('/student/all', 
-    [StudentsController::class, 'index']
-);
+Route::group(["prefix" => "/student"], function() {
+    Route::get("/all", [StudentsController::class, "index"]);
+    Route::get("/detail/{student}", [StudentsController::class, "show"])-> name('student.show');
+    Route::get("/create", [StudentsController::class, "create"])->name('student.create');
+    Route::post("/store", [StudentsController::class, "store"])->name('student.store');
+    Route::delete("/delete/{student}", [StudentsController::class, "destroy"])->name("student.destroy");
+    Route::get("/{student}/edit", [StudentsController::class, "edit"])->name('student.edit');
+    Route::patch("/students/{student}", [StudentsController::class, "update"])->name('student.update');
+    
+});
 
-Route::get('/student/detail/{student}',
-    [StudentsController::class,
-    'show'
-    ],
-);
+Route::group(["prefix" => "/grade"], function() {
+    Route::get("/all", [GradesController::class, "index"]);
+    Route::get("/form", [GradesController::class, "create"]);
+    Route::post("/add", [GradesController::class, "store"])->name('add_grade');
+});
+
 
