@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\GradesController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +54,14 @@ Route::group(["prefix" => "/student"], function() {
 Route::group(["prefix" => "/grade"], function() {
     Route::get("/all", [GradesController::class, "index"]);
     Route::get("/form", [GradesController::class, "create"]);
-    Route::post("/add", [GradesController::class, "store"])->name('add_grade');
+    Route::post("/add", [GradesController::class, "store"])->name('add.grade');
 });
+
+Route::get('/login', [LoginController::class, 'show'])-> name('login.show');
+Route::post('/login', [LoginController::class, 'authenticate'])-> name('login.auth');
+Route::post('/logout', [LoginController::class, 'logout'])-> name('logout');
+
+Route::get('/register', [RegisterController::class, 'show'])-> name('register.show');
+Route::post('/register', [RegisterController::class, 'store'])-> name('register.store');
 
 

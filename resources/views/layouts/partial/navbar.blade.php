@@ -15,18 +15,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/student/all">Students</a>
+                <a class="nav-link" href="/student/all">Students</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/grade/all">Grades</a>
+                <a class="nav-link" href="/grade/all">Grades</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/about">About</a>
             </li>
+            
+
         </ul>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+ 
         </div>
     </div>
 </nav>
