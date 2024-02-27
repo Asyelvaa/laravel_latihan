@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     
-    public function show()
+    public function index()
     {
-        return view('login.login', [
+        return view('authentication.login', [
             "title" => "Login"
         ]);
     }
@@ -18,13 +18,13 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email:dns',
             'password' => 'required'
         ]);
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/student/all')
+            return redirect()->intended('about')
                 ->withSuccess('You have successfully logged in!');
         }
 

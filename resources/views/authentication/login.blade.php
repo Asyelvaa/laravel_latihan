@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 </head>
 <body>
   <div class="container-form">
     <main class="form-signin">
-      <form action="{{ route('login.auth') }}" method="post">
+      <form action="/login" method="post">
+        @csrf
         <h1 class="h3 mb-3 fw-bold">Welcome Back!</h1>
 
         <div class="form-floating mb-2">
@@ -30,7 +31,7 @@
         </div>
         <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
 
-        <p class="text-center m-2"> Don't have an account? <a href="{{route('register.show')}}">Register</a></p>
+        <p class="text-center m-2"> Don't have an account? <a href="{{route('register')}}">Register</a></p>
       </form>
     </main>
   </div>

@@ -10,49 +10,38 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $credentials = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|confirmed'
+            'password' => 'required|min:5'
         ]);
         $credentials['password'] = Hash::make($credentials['password']);
 
         User::create($credentials);
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->route('student.show')
+        // $request->flash('success', 'Register berhasil, Silahkan login !');
+
+        // return redirect('/authentication/login');
+        // User::create($credentials);
+        // Auth::attempt($credentials);
+        // $request->session()->regenerate();
+        return redirect()->route('login')
             ->withSuccess('You have successfully registered & logged in!');
         // session()->flash('success', 'Register success, Silahkan login');
-        // return redirect('login.show');
+        // return redirect('/authentication/login');
+        // return redirect('/login');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(register $register)
+    public function index(register $register)
     {
-        return view('login.register', [
+        return view('authentication.register', [
             "title" => "Register"
         ]);
     }
