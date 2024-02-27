@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function(){
-    return view('dashboard.dashboard', [
+    return view('home', [
         "title" => "Home"
     ]);
 });
@@ -58,14 +58,15 @@ Route::group(["prefix" => "/grade"], function() {
     Route::post("/add", [GradesController::class, "store"])->name('grade.add');
 });
 
+Route::group(['prefix' => 'auth'], function () {
 Route::get('/login', [LoginController::class, 'index'])-> name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])-> name('logout');
-
 Route::get('/register', [RegisterController::class, 'index'])-> name('register');
 Route::post('/register', [RegisterController::class, 'store']);
+})->middleware('guest');
 
-Route::group(["prefix" => "/dashboard"], function(){
+Route::group([ "middleware" => "CheckLogin","prefix" => "/dashboard"], function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/student', [DashboardController::class, 'student']);
     Route::get('/grade', [DashboardController::class, 'grade']);
