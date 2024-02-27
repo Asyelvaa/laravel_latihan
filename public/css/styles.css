@@ -31,3 +31,8 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}

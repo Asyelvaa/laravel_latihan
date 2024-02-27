@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GradesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -26,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function(){
-    return view('home', [
+    return view('dashboard.dashboard', [
         "title" => "Home"
     ]);
 });
@@ -64,4 +65,9 @@ Route::post('/logout', [LoginController::class, 'logout'])-> name('logout');
 Route::get('/register', [RegisterController::class, 'index'])-> name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::group(["prefix" => "/dashboard"], function(){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/student', [DashboardController::class, 'student']);
+    Route::get('/grade', [DashboardController::class, 'grade']);
+});
 
