@@ -4,13 +4,6 @@
 <div >
     <h1>Tentang Saya</h1>
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Nama</th>
-                <th scope="col">Kelas</th>
-                <th scope="col">Foto</th>
-            </tr>
-        </thead>
         <tbody>
             <tr>
                 <td>Asyella</td>

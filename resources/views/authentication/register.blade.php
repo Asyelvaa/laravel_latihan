@@ -15,20 +15,20 @@
 <body>
   <div class="container-form">
     <main class="form-signin">
-      <form action="/auth/registerAdd" method="POST">
+      <form action="{{route('registerAdd')}}" method="POST">
         @csrf
         <h1 class="h3 mb-3 fw-bold">Hello, Let's Sign Up!</h1>
 
         <div class="form-floating mb-2">
-          <input type="name" class="form-control" id="floatingInput" placeholder="your name">
+          <input type="name" name="name" class="form-control" id="floatingInput" placeholder="your name">
           <label for="floatingInput">Name</label>
         </div>
         <div class="form-floating mb-2">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
 

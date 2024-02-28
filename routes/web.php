@@ -60,15 +60,15 @@ Route::group(["prefix" => "/grade"], function() {
 });
 
 Route::group(['prefix' => 'auth'], function () {
-Route::get('/login', [LoginController::class, 'index'])-> name('login');
-Route::post('/loginAdd', [LoginController::class, 'authenticate']);
+Route::get('/login', [LoginController::class, 'index'])-> name('login')->middleware('guest');
+Route::post('/loginAdd', [LoginController::class, 'authenticate'])-> name('loginAdd');
 Route::post('/logout', [LoginController::class, 'logout'])-> name('logout');
-Route::get('/register', [RegisterController::class, 'index'])-> name('register');
-Route::post('/registerAdd', [RegisterController::class, 'store'])->name('registerAdd');
-})->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])-> name('register')->middleware('guest');
+Route::post('/registerAdd', [RegisterController::class, 'store'])-> name('registerAdd');
+});
 
 Route::group([ 
-    "middleware" => "CheckLogin",
+    "middleware" => "checkLogin",
     "prefix" => "/dashboard"], function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/student', [DashboardController::class, 'student']);
