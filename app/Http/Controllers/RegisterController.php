@@ -19,8 +19,8 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5'
         ]);
-        $credentials['password'] = Hash::make($credentials['password']);
 
+        $credentials['password'] = Hash::make($credentials['password']);
         User::create($credentials);
         // $request->flash('success', 'Register berhasil, Silahkan login !');
 
@@ -29,7 +29,7 @@ class RegisterController extends Controller
         // Auth::attempt($credentials);
         // $request->session()->regenerate();
         return redirect()->route('login')
-            ->withSuccess('You have successfully registered & logged in!');
+            ->with('success', 'Register berhasil, Silahkan login !');
         // session()->flash('success', 'Register success, Silahkan login');
         // return redirect('/authentication/login');
         // return redirect('/login');
@@ -42,31 +42,9 @@ class RegisterController extends Controller
     public function index(register $register)
     {
         return view('authentication.register', [
-            "title" => "Register"
+            "title" => "Register",
+            "users" => User::all()
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(register $register)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, register $register)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(register $register)
-    {
-        //
-    }
 }

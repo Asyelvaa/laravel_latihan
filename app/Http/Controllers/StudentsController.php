@@ -44,7 +44,7 @@ class StudentsController extends Controller
     public function destroy( Student $student) {
         $result = Student::destroy($student->id);
         if ($result) {
-            return redirect('/student/all')->with('success', 'Data siswa berhasil dihapus !');
+            return redirect('/dashboard/student')->with('success', 'Data siswa berhasil dihapus !');
         } else {
             return back()->with('error', 'Failed to delete data');
         }
@@ -69,7 +69,7 @@ class StudentsController extends Controller
         ]);
         $result = Student::where('id', $student->id)->update($validateData);
         if ($result) {
-            return redirect('/student/all')->with('success', 'Data updated successfully');
+            return redirect('/dashboard/student')->with('success', 'Data updated successfully');
         } else {
             return back()->with('error', 'Failed to update data');
         }

@@ -16,9 +16,20 @@ class Student extends Model
         'alamat',
     ];
 
+    protected $guarded = ['id'];
+
     public function grade()
     {
         return $this->belongsTo(Grades::class, 'grade_id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        if(isset($filters['search']) && $filters['search']) {
+            return $query->where('nama', 'like', '%' . $filters['search'] . '%');
+        }
+        return $query;
+    }
     
 }
+

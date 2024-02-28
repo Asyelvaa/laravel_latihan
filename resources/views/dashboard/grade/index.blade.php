@@ -1,20 +1,22 @@
-@extends('layouts.main')
+@extends('dashboard.dashboard')
 
 @section('content')
-<div class="container mt-2 text-center">
+
+<div class="container mt-5">
     <h1>Data Kelas</h1>
+    <a href="/grade/form"  type="button" class="btn btn-dark mt-5">Tambah Kelas</a>
+
     @if(session()->has('success'))
     <div class="alert alert-success col-lg-12" role="alert">
         {{session('success')}}
     </div>
     @endif
-    <div class="row justify-content-center mt-5">
-    <table class="table " style="width: 300px">
+
+    <table class="table mt-2">
         <thead>
-            <tr class="table-dark">
+            <tr>
                 <th scope="col">No</th>
                 <th scope="col">Kelas</th>
-
             </tr>   
         </thead>
         <tbody>
@@ -26,6 +28,5 @@
             @endforeach
         </tbody>
     </table>
-    </div>
 </div>
 @endsection
