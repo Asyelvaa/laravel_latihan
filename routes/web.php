@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,10 +68,11 @@ Route::post('/registerAdd', [RegisterController::class, 'store'])->name('registe
 })->middleware('guest');
 
 Route::group([ 
-    // "middleware" => "CheckLogin",
+    "middleware" => "CheckLogin",
     "prefix" => "/dashboard"], function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/student', [DashboardController::class, 'student']);
     Route::get('/grade', [DashboardController::class, 'grade']);
+    Route::get("/student/detail/{student}", [DashboardController::class, "show"])->name('student.show');
 });
 

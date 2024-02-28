@@ -36,3 +36,32 @@ body {
   background-color: #007bff;
   color: #fff;
 }
+
+.pagination-light .page-link {
+  color: #343a40; /* Text color */
+  background-color: #f8f9fa; /* Light background color */
+  border-color: #dee2e6; /* Border color */
+}
+
+.pagination-light .page-item.active .page-link {
+  color: #fff; /* Text color for active page */
+  background-color: #343a40; /* Dark background color for active page */
+  border-color: #343a40; /* Border color for active page */
+}
+
+.pagination-light .page-link:hover {
+  color: #fff; /* Text color on hover */
+  background-color: #343a40; /* Dark background color on hover */
+  border-color: #343a40; /* Border color on hover */
+}
+
+.pagination-light .page-item.disabled .page-link {
+  color: #6c757d; /* Text color for disabled pages */
+  background-color: #f8f9fa; /* Light background color for disabled pages */
+  border-color: #dee2e6; /* Border color for disabled pages */
+  pointer-events: none; /* Disable pointer events for disabled pages */
+}
+
+.pagination-light .page-item.disabled .page-link:focus {
+  box-shadow: none; /* Remove focus box shadow for disabled links */
+}

@@ -30,4 +30,11 @@ class DashboardController extends Controller
             'grades' => $grades
         ]);
     }
+
+    public function show($student) {
+        return view('dashboard.student.detail', [
+            "title" => "Detail Students",
+            "student" => Student::find($student)
+        ]);
+    }
 }
