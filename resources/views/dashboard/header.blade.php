@@ -13,9 +13,9 @@
           <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
         </ul> -->
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " role="search">
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " role="search">
           <input type="search" class="form-control form-control-light text-bg-light" placeholder="Search..." aria-label="Search">
-        </form>
+        </form> -->
 
         <div class="text-end">
           <button type="button" class="btn btn-outlined-dark me-2">Logout</button>

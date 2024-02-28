@@ -2,10 +2,16 @@
 
 @section('content')
 <div class="container mt-5 ">
-<table class="table">
-<h1>Data Siswa</h1>
-
-<a href="{{ route('student.create') }}"  type="button" class="btn btn-primary">Tambah Siswa</a>
+    <table class="table">
+        <h1>Data Siswa</h1>
+        <form action="/dashboard/student">
+            <div class="input-group mb-5">
+                <input type="text" class="form-control " placeholder="Search" name="search"
+                    value="{{request('search')}}">
+                <button class="btn btn-info bg-primary text-white" type="submit" id="button-addon2">Search</button>
+            </div>
+        </form>
+        <a href="{{ route('student.create') }}"  type="button" class="btn btn-primary">Tambah Siswa</a>
 
 @if(session()->has('success'))
 <div class="alert alert-success col-lg-12" role="alert">
@@ -17,7 +23,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col" style="width: 5%;">No</th>
+            <!-- <th scope="col" style="width: 5%;">No</th> -->
             <th scope="col" style="width: 15%;">NIS</th>
             <th scope="col" style="width: 30%;">Nama</th>
             <th scope="col" style="width: 20%;">Kelas</th>
@@ -27,7 +33,7 @@
     <tbody>
         @foreach($students as $student)
         <tr>
-        <th scope="row">{{$loop->iteration}}</th>
+        <!-- <th scope="row">{{$loop->iteration}}</th> -->
             <td style="width: 15%;">{{$student["nis"]}}</td>
             <td style="width: 30%;">{{$student["nama"]}}</td>
             <td style="width: 20%;">{{optional($student->grade)->name}}</td>
@@ -47,6 +53,31 @@
         @endforeach
     </tbody>
 </table>
+<!-- <div class="d-flex justify-content-center">
+  {{ $students->links()}}
+</div> -->
+<div class="d-flex justify-content-center mt-5">
+            <ul class="pagination">
+                <li class="page-item {{ $students->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $students->previousPageUrl() }}" tabindex="-1"
+                        aria-disabled="true">
+                        <span aria-hidden="true">&laquo;</span> Previous
+                    </a>
+                </li>
+
+                @foreach ($students as $student)
+                <li class="page-item {{ $students->currentPage() == $loop->index + 1 ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $students->url($loop->index + 1) }}">{{ $loop->index + 1 }}</a>
+                </li>
+                @endforeach
+
+                <li class="page-item {{ $students->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $students->nextPageUrl() }}">
+                        Next <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 </div>
 </div>
 

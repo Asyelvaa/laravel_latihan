@@ -17,7 +17,7 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Kelas</th>
-            <th scope="col">Action</th>
+            <!-- <th scope="col">Action</th> -->
 
         </tr>   
     </thead>

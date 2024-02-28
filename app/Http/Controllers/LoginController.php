@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,8 @@ class LoginController extends Controller
     public function index()
     {
         return view('authentication.login', [
-            "title" => "Login"
+            "title" => "Login",
+            "users" => User::all()
         ]);
     }
 
@@ -28,9 +30,7 @@ class LoginController extends Controller
                 ->withSuccess('You have successfully logged in!');
         }
 
-        return back()->withErrors([
-            'email' => 'login failed!',
-        ])->onlyInput('email');
+        return back()->with('loginError', 'Login failed, please check your credentials and try again.');
     }
 
     public function logout()

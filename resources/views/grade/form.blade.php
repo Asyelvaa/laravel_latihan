@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Add Grade</h1>
-    <form method="post" action="{{route('add_grade')}}">
+    <form method="post" action="{{route('grade.add')}}">
     @csrf
         <div class="mb-3">
         <label for="name" class="form-label">Kelas</label>

@@ -17,10 +17,10 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'nis' => $this->faker->unique()->randomNumber(5),
-            'nama' => $this->faker->name($gender = null|'male'|'female'),
+            'nis' => $this->faker->unique()->numberBetween(100000, 599999),
+            'nama' => $this->faker->name,
             'tanggal_lahir' => $this->faker->date(),
-            'grade_id' => 1,
+            'grade_id' => $this->faker->numberBetween(1, 3),
             'alamat' => $this->faker->streetAddress(),
         ];
     }
